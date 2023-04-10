@@ -1,11 +1,14 @@
-const { expect } = require("chai");
-const { ethers } = require("hardhat");
+import { expect } from "chai";
+import { ethers } from "hardhat";
+import { PaymentSplitter } from "../typechain";
 
 describe("PaymentSplitter", function() {
+    let paymentSplitter: PaymentSplitter;
+
   it("should split a payment equally between payees", async function() {
     const [owner, payee1, payee2, payee3] = await ethers.getSigners();
     const PaymentSplitter = await ethers.getContractFactory("PaymentSplitter");
-    const paymentSplitter = await PaymentSplitter.deploy(
+    paymentSplitter = await PaymentSplitter.deploy(
       [payee1.address, payee2.address, payee3.address],
       [1, 1, 1]
     );
@@ -16,5 +19,5 @@ describe("PaymentSplitter", function() {
     expect(payee1Balance).to.be.gt(0);
     expect(payee1Balance).to.equal(payee2Balance);
     expect(payee2Balance).to.equal(payee3Balance);
-  });
+  });   
 });
