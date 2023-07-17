@@ -1,10 +1,19 @@
 # Contract Collection
 
-Contract Collection is a repository containing a variety of smart contracts, along with deployment scripts and testing. It aims to be a useful resource for developers who are looking for pre-built smart contracts that can be used in their projects but mostly for those who want to learn more about smart contract development. The creation of these contracts are aided by artificial intelligence. 
+Contract Collection is a repository containing a variety of simple smart contracts, along with scripts for deployment and testing. It aims to be an educational resource for myself and others who want to learn more about smart contract development. The creation of some contracts are aided by artificial intelligence. 
 
 ## Contracts
 
-The contracts in this repository cover a range of use cases and functionalities. Each contract is self-contained and comes with a deployment script that can be used to deploy the contract to the blockchain.
+The contracts in this repository cover a range of use cases and functionalities. Here are some types of contracts you can expect to see:
+
+- **Upgradable Contracts**: These contracts are designed with the ability to be upgraded in the future via a proxy.
+- **Marketplace Contracts**: These contracts facilitate the buying and selling of goods or services.
+- **DAO Contracts**: These contracts allow for decentralized organization and governance.
+- **Staking Contracts**: These are contracts that enable users to lock up their tokens in return for rewards.
+- **Singleton Contracts**: These are contracts that serve as a consistent point of interaction for specific and repeatable functionalities across an entire protocol.
+- **Multi-Signature Wallet Contracts**: These are contracts that require the agreement of multiple parties to execute transactions.
+
+Each contract is self-contained and comes with a deployment script that can be used to deploy the contract to the blockchain.
 
 ## Deployment Scripts
 
