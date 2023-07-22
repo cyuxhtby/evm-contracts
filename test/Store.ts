@@ -42,6 +42,13 @@ describe("Store", function () {
         await store.connect(manager).addToInventory(item3.name, item3.id, item3.price);
     });
 
+    it("should fail to add an item to inventory as a non-manager", async function(){
+        const item4: Item = { name: "red cap", id: 3, price: ethers.utils.parseEther("0.01"), isSold: false};
+
+        // Add item as non-manager
+        await expect(store.connect(addr1).addToInventory(item4.name, item4.id, item4.price)).to.be.rejectedWith("You are not the manager");
+    });
+
     it("should list the items in the inventory", async function () {
         // Retrieve the count of items in the inventory
         const count = await store.getInventoryCount();
@@ -57,7 +64,7 @@ describe("Store", function () {
 
         // Check that the item is now marked as sold
         const item = await store.getItem(0);
-        expect(item.isSold).to.equal(true);
+        expect(item[3]).to.equal(true);
     });
 })
 

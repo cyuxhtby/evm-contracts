@@ -27,6 +27,15 @@ contract Store {
         emit AddedItem(_name, _id, _price);
     }
 
+    function getInventoryCount() public view returns (uint256) {
+    return inventory.length;
+    }
+
+    function getItem(uint256 index) public view returns (string memory, uint256, uint256, bool) {
+        Item memory item = inventory[index];
+        return (item.name, item.id, item.price, item.isSold);
+    }
+
     function buy(uint256 _id) public payable {
         require(_id < inventory.length, "Not a valid ID");
         require(!inventory[_id].isSold, "Item not available");
@@ -42,7 +51,7 @@ contract Store {
     }
 
     modifier onlyManager() {
-        require(msg.sender == manager);
+        require(msg.sender == manager, "You are not the manager");
         _;
     }
 
