@@ -2,7 +2,8 @@
 
 pragma solidity ^0.8.19;
 
-import 'fhevm/lib/TFHE.sol';    
+import "@fhenixprotocol/contracts/FHE.sol";
+import "@fhenixprotocol/access/Permissioned.sol";
 
 contract PrivateToken {
 
@@ -12,15 +13,15 @@ contract PrivateToken {
 
     address public contractOwner;
 
-    function mint(euint32 encryptedAmount) public onlyOwner {
-        euint32 amount = TFHE.asEuint32(encryptedAmount);
+    function mint(inEunt32 calldata encryptedAmount) public onlyOwner {
+        euint32 amount = FHE.asEuint32(encryptedAmount);
         balances[contractOwner] = balances[contractOwner] + amount;
         totalSupply = totalSupply + amount;
     }
 
-    function transfer(address to, euint32 encryptedAmount) public {
-        euint32 amount = TFHE.asEuint32(encryptedAmount);
-        require(TFHE.le(amount, balances[msg.sender]), "Insufficient balance");
+    function transfer(address to, inEunt32 calldata encryptedAmount) public {
+        euint32 amount = FHE.asEuint32(encryptedAmount);
+        require(FHE.le(amount, balances[msg.sender]), "Insufficient balance");
         balances[to] = balances[to] + amount;
         balances[msg.sender] = balances[msg.sender] - amount;
     }
