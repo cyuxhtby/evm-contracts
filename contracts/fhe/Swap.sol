@@ -3,7 +3,7 @@
 pragma solidity ^0.8.19;
 
 import {FHE, euint16, ebool} from "@fhenixprotocol/contracts/FHE.sol";
-import {FHERC20} from "FHERC20.sol";
+import {FHERC20} from "./FHERC20.sol";
 
 contract Swap {
 
