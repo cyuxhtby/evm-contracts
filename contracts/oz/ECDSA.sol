@@ -23,11 +23,29 @@ library ECDSALib {
     error ECDSAInvalidSignatureLength(uint256 length);
     error InvalidSignatureS(bytes32 s);
 
+    // Elliptic curve:
+    //  uses secp256k1 standard
+    //  plotted as y² = x³ + 7 over a prime field
+
+    // Auxiliary values not in final signature:
+    //  k: random value
+    //  G: base point that generates all other curve points
+    //  R: random point on curve (k * G) 
+    //  n: curve order (total of valid points)
+
+    // Values in final signature:
+    // r: x-coordinate of point R
+    // s: proof value
+    //    k^-1 * (txHash + r * privKey) mod n
+    // v: recovery value:
+    //    recoveryId (binary for even or odd y-coordinate of R) + 27 + chainId * 2 + 35
+
+
     function recover(bytes32 hash, bytes memory signature) internal pure returns (address recovered, RecoverError error, bytes32 errorArg) {
         if (signature.length == 65) {
             bytes32 r;
             bytes32 s;
-            uint8 v; // one byte
+            uint8 v;
             assembly {
                 // signature encoding ordering follows DER standard
                 // mload(location) 
