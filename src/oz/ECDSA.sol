@@ -6,9 +6,7 @@ contract ECDSA {
 
     function verifySignature(bytes32 hash, bytes memory signature) public pure returns (bool isValid) {
         address signer = ECDSALib.recover(hash, signature);
-        if (signer != address(0)) {
-            return true;
-        }
+        return signer != address(0); 
     }
 }
 

@@ -1,32 +1,66 @@
-# Contract Collection
+## Foundry
 
-Contract Collection is a repository containing a variety of simple smart contracts, along with scripts for deployment and testing. It aims to be an educational resource for myself and others who want to learn more about smart contract development. The creation of some contracts are aided by artificial intelligence. 
+**Foundry is a blazing fast, portable and modular toolkit for Ethereum application development written in Rust.**
 
-## Contracts
+Foundry consists of:
 
-The contracts in this repository cover a range of use cases and functionalities. Here are some types of contracts you can expect to see:
+-   **Forge**: Ethereum testing framework (like Truffle, Hardhat and DappTools).
+-   **Cast**: Swiss army knife for interacting with EVM smart contracts, sending transactions and getting chain data.
+-   **Anvil**: Local Ethereum node, akin to Ganache, Hardhat Network.
+-   **Chisel**: Fast, utilitarian, and verbose solidity REPL.
 
-- **Upgradable Contracts**: These contracts are designed with the ability to be upgraded in the future via a proxy.
-- **Marketplace Contracts**: These contracts facilitate the buying and selling of goods or services.
-- **DAO Contracts**: These contracts allow for decentralized organization and governance.
-- **Staking Contracts**: These are contracts that enable users to lock up their tokens in return for rewards.
-- **Singleton Contracts**: These are contracts that serve as a consistent point of interaction for specific and repeatable functionalities across an entire protocol.
-- **Multi-Signature Wallet Contracts**: These are contracts that require the agreement of multiple parties to execute transactions.
+## Documentation
 
-Each contract is self-contained and comes with a deployment script that can be used to deploy the contract to the blockchain.
+https://book.getfoundry.sh/
 
-## Deployment Scripts
+## Usage
 
-The deployment scripts are designed to make it easy to deploy the contracts to a variety of blockchain networks. The scripts use Hardhat as the development framework and support deployment to local networks, as well as testnets and mainnets.
+### Build
 
-## Testing
+```shell
+$ forge build
+```
 
-Each contract comes with a comprehensive set of tests that cover all of the contract's functionality. The tests are written using the Hardhat testing framework and can be run using the `npx hardhat test` command.
+### Test
 
-## Contributing
+```shell
+$ forge test
+```
 
-Contributions to this repository are welcome! If you have a smart contract that you would like to contribute, please open a pull request. 
+### Format
 
-## License
+```shell
+$ forge fmt
+```
 
-This repository is licensed under the MIT License.
+### Gas Snapshots
+
+```shell
+$ forge snapshot
+```
+
+### Anvil
+
+```shell
+$ anvil
+```
+
+### Deploy
+
+```shell
+$ forge script script/Counter.s.sol:CounterScript --rpc-url <your_rpc_url> --private-key <your_private_key>
+```
+
+### Cast
+
+```shell
+$ cast <subcommand>
+```
+
+### Help
+
+```shell
+$ forge --help
+$ anvil --help
+$ cast --help
+```
